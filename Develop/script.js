@@ -20,7 +20,27 @@ var length = prompt("How many characters would you like your password to be?")
 var useLower = confirm('Would you like your password to contain lower-case letters? (Select "OK" for yes, or "Cancel" for no)')
 var useUpper = confirm('Would you like your password to contain upper-case letters? (Select "OK" for yes, or "Cancel" for no)')
 var useNumbers = confirm('Would you like your password to contain numbers? (Select "OK" for yes, or "Cancel" for no)')
-var useLower = confirm('Would you like your password to contain special characters? (Select "OK" for yes, or "Cancel" for no)')
+var useSpecial = confirm('Would you like your password to contain special characters? (Select "OK" for yes, or "Cancel" for no)')
+
+if (useLower) {
+  var characters = lowerAlpha
+} else {
+  var characters = []
+}
+
+if (useUpper) {
+  var characters = characters.concat(upperAlpha)
+}
+
+if (useNumbers) {
+  var characters = characters.concat(numbers)
+}
+
+if (useSpecial) {
+  var characters = characters.concat(special)
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////
 // DO NOT TOUCH THIS CODE
