@@ -16,7 +16,9 @@ var upperAlpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 var special = ["!", "@", "#", "$", "%", "~", "&", "^", "*", "?", "<", ">"]
 
-var length = prompt("How many characters would you like your password to be?")
+function generatePassword() {
+
+var passLength = prompt("How many characters would you like your password to be?")
 var useLower = confirm('Would you like your password to contain lower-case letters? (Select "OK" for yes, or "Cancel" for no)')
 var useUpper = confirm('Would you like your password to contain upper-case letters? (Select "OK" for yes, or "Cancel" for no)')
 var useNumbers = confirm('Would you like your password to contain numbers? (Select "OK" for yes, or "Cancel" for no)')
@@ -40,7 +42,18 @@ if (useSpecial) {
   var characters = characters.concat(special)
 }
 
+output = ""
 
+var i = 0
+
+while (i<passLength) {
+  var random = characters[Math.floor(Math.random()*characters.length)];
+  output = output + random
+  i++;
+}
+
+return(output)
+}
 
 ///////////////////////////////////////////////////////////////////////
 // DO NOT TOUCH THIS CODE
