@@ -19,10 +19,46 @@ var special = ["!", "@", "#", "$", "%", "~", "&", "^", "*", "?", "<", ">"]
 function generatePassword() {
 
 var passLength = prompt("How many characters would you like your password to be?")
+
+if (passLength === "0" || passLength === "") {
+  alert("Error! Please input a number greater than zero.")
+  return
+} else alert("You have selected " + passLength + " characters.")
+
 var useLower = confirm('Would you like your password to contain lower-case letters? (Select "OK" for yes, or "Cancel" for no)')
+if (useLower) {
+  alert("You have chosen to include lower-case letters")
+} else {
+  alert("You have chosen to not include lower-case letters")
+}
+
 var useUpper = confirm('Would you like your password to contain upper-case letters? (Select "OK" for yes, or "Cancel" for no)')
+if (useUpper) {
+  alert("You have chosen to include upper-case letters")
+} else {
+  alert("You have chosen to not include upper-case letters")
+}
+
 var useNumbers = confirm('Would you like your password to contain numbers? (Select "OK" for yes, or "Cancel" for no)')
+if (useNumbers) {
+  alert("You have chosen to include numbers")
+} else {
+  alert("You have chosen to not include numbers")
+}
+
 var useSpecial = confirm('Would you like your password to contain special characters? (Select "OK" for yes, or "Cancel" for no)')
+if (useLower) {
+  alert("You have chosen to include special characters")
+} else {
+  alert("You have chosen to not include special characters")
+}
+
+
+
+if (useLower === false && useUpper === false && useNumbers === false && useSpecial === false) {
+  alert("Error! Please select at least one character type.")
+}
+
 
 if (useLower) {
   var characters = lowerAlpha
