@@ -1,104 +1,135 @@
-///////////////////////////////////////////////////////////////////////
-// PASSWORD GENERATOR
-//
-// * For this assignment, you will not be changing the HTML and CSS at all.
-//
-// * You will need a generatePassword function is called when the user
-//   clicks the Generate Password button.
-//
-// * You can create other functions that are called from within
-//   generatePassword
-//
-// * Gather user input with prompt's and confirm's
-
+//creating arrays of possible characters
 var lowerAlpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var upperAlpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 var special = ["!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"]
 
+//writing function
 function generatePassword() {
 
-var passLength = prompt("How many characters would you like your password to be? Please input a number between 8 and 128.")
+  //storing the desired password length as a variable
+  var passLength = prompt("How many characters would you like your password to be? Please input a number between 8 and 128.")
 
-// if (parseInt(passLength) < 8 || parseInt(passLength) > 128 || passLength === null) {
-//   alert("Error! Please input a number between 8 and 128.")
-//   return
-// } else alert("You have selected " + passLength + " characters.")
+  //creating variable to collect the usable characters
+  var characters = []
 
-if (parseInt(passLength) >= 8 && parseInt(passLength) <= 128) {
-  alert("You have selected " + passLength + " characters.")
-} else {
-  alert("Error! Please input a number between 8 and 128.")
-  return("Please try again")
-}
+  //creating variable to collect the string of randomly generated characters for password
+  var output = ""
 
-var useLower = confirm('Would you like your password to contain lower-case letters? (Select "OK" for yes, or "Cancel" for no)')
-if (useLower) {
-  alert("You have chosen to include lower-case letters")
-} else {
-  alert("You have chosen to not include lower-case letters")
-}
+  //making sure the password is between 8 and 128 characters
+  if (parseInt(passLength) >= 8 && parseInt(passLength) <= 128) {
+    alert("You have selected " + passLength + " characters.")
+  } else {
+    alert("Error! Please input a number between 8 and 128.")
+    return("Please try again")
+  }
 
-var useUpper = confirm('Would you like your password to contain upper-case letters? (Select "OK" for yes, or "Cancel" for no)')
-if (useUpper) {
-  alert("You have chosen to include upper-case letters")
-} else {
-  alert("You have chosen to not include upper-case letters")
-}
+  //confirms use of lower-case letters
+  var useLower = confirm('Would you like your password to contain lower-case letters? (Select "OK" for yes, or "Cancel" for no)')
+  
+  if (useLower) {
+    
+    //verifies user's choice
+    alert("You have chosen to include lower-case letters")
+    
+    //adds lower-case letters to the array of characters allowed to be used
+    characters = characters.concat(lowerAlpha)
+    
+    //adds one random lower-case letter to the password to guarantee a lower-case letter is included
+    output = output + lowerAlpha[(Math.floor(Math.random()*lowerAlpha.length))]
+  
+  } else {
 
-var useNumbers = confirm('Would you like your password to contain numbers? (Select "OK" for yes, or "Cancel" for no)')
-if (useNumbers) {
-  alert("You have chosen to include numbers")
-} else {
-  alert("You have chosen to not include numbers")
-}
+    //verifies user's choice
+    alert("You have chosen to not include lower-case letters")
 
-var useSpecial = confirm('Would you like your password to contain special characters? (Select "OK" for yes, or "Cancel" for no)')
-if (useLower) {
-  alert("You have chosen to include special characters")
-} else {
-  alert("You have chosen to not include special characters")
-}
+  }
 
+  //confirms use of upper-case letters
+  var useUpper = confirm('Would you like your password to contain upper-case letters? (Select "OK" for yes, or "Cancel" for no)')
 
+  if (useUpper) {
 
-if (useLower === false && useUpper === false && useNumbers === false && useSpecial === false) {
-  alert("Error! Please select at least one character type.")
-  return("Please try again")
-}
+    //verifies user's choice
+    alert("You have chosen to include upper-case letters")
 
-var characters = []
-var output = ""
+    //adds upper-case letters to the array of characters allowed to be used
+    characters = characters.concat(upperAlpha)
 
-if (useLower) {
-  characters = characters.concat(lowerAlpha)
-  output = output + lowerAlpha[(Math.floor(Math.random()*lowerAlpha.length))]
-}
+    //adds one random upper-case letter to the password to guarantee an upper-case letter is included
+    output = output + upperAlpha[(Math.floor(Math.random()*upperAlpha.length))]
 
-if (useUpper) {
-  characters = characters.concat(upperAlpha)
-  output = output + upperAlpha[(Math.floor(Math.random()*upperAlpha.length))]
-}
+  } else {
 
-if (useNumbers) {
-  characters = characters.concat(numbers)
-  output = output + numbers[(Math.floor(Math.random()*numbers.length))]
-}
+    //verifies user's choice
+    alert("You have chosen to not include upper-case letters")
 
-if (useSpecial) {
-  characters = characters.concat(special)
-  output = output + special[(Math.floor(Math.random()*special.length))]
-}
+  }
 
-var i = output.length
+  //confirms use of numbers
+  var useNumbers = confirm('Would you like your password to contain numbers? (Select "OK" for yes, or "Cancel" for no)')
 
-while (i<passLength) {
-  var random = characters[Math.floor(Math.random()*characters.length)];
-  output = output + random
-  i++;
-}
+  if (useNumbers) {
 
-return(output)
+    //verifies user's choice
+    alert("You have chosen to include numbers")
+
+    //adds numbers to the array of characters allowed to be used
+    characters = characters.concat(numbers)
+
+    //adds one random number to the password to guarantee a number is included
+    output = output + numbers[(Math.floor(Math.random()*numbers.length))]
+
+  } else {
+
+    //verifies user's choice
+    alert("You have chosen to not include numbers")
+
+  }
+
+  //confirms use of special characters
+  var useSpecial = confirm('Would you like your password to contain special characters? (Select "OK" for yes, or "Cancel" for no)')
+
+  if (useLower) {
+
+    //verifies user's choice
+    alert("You have chosen to include special characters")
+
+    //adds special characters to the array of characters allowed to be used
+    characters = characters.concat(special)
+
+    //adds one random special character to the password to guarantee a special character is included
+    output = output + special[(Math.floor(Math.random()*special.length))]
+  
+  } else {
+    //verifies user's choice
+    alert("You have chosen to not include special characters")
+  }
+
+  //alerts user if they have selected to not include any character types
+  if (useLower === false && useUpper === false && useNumbers === false && useSpecial === false) {
+    alert("Error! Please select at least one character type.")
+    return("Please try again")
+  }
+
+  //since output already contains characters, this starts the while loop at the number of characters already included
+  var i = output.length
+
+  //creates a loop for randomly generating remaining characters needed until desired password length is attained
+  while (i<passLength) {
+
+    //selects a random character from the array of allowable characters that was created above
+    var random = characters[Math.floor(Math.random()*characters.length)];
+
+    //adds the new random character to the end of the password
+    output = output + random
+
+    //increases "i" variable by 1 to restart the while-loop, or stop it if the desired password length has been reached
+    i++;
+  }
+
+  //returns the password
+  return(output)
 }
 
 ///////////////////////////////////////////////////////////////////////
