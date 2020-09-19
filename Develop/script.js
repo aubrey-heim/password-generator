@@ -11,10 +11,10 @@
 //
 // * Gather user input with prompt's and confirm's
 
-var lowerAlpha = "abcdefghijklmnopqrstuvwxyz"
-var upperAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var lowerAlpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var upperAlpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-var special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+var special = ["!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"]
 
 function generatePassword() {
 
@@ -67,28 +67,30 @@ if (useLower === false && useUpper === false && useNumbers === false && useSpeci
   return("Please try again")
 }
 
+var characters = []
+var output = ""
 
 if (useLower) {
-  var characters = lowerAlpha
-} else {
-  var characters = []
+  characters = characters.concat(lowerAlpha)
+  output = output + lowerAlpha[(Math.floor(Math.random()*lowerAlpha.length))]
 }
 
 if (useUpper) {
-  var characters = characters.concat(upperAlpha)
+  characters = characters.concat(upperAlpha)
+  output = output + upperAlpha[(Math.floor(Math.random()*upperAlpha.length))]
 }
 
 if (useNumbers) {
-  var characters = characters.concat(numbers)
+  characters = characters.concat(numbers)
+  output = output + numbers[(Math.floor(Math.random()*numbers.length))]
 }
 
 if (useSpecial) {
-  var characters = characters.concat(special)
+  characters = characters.concat(special)
+  output = output + special[(Math.floor(Math.random()*special.length))]
 }
 
-output = ""
-
-var i = 0
+var i = output.length
 
 while (i<passLength) {
   var random = characters[Math.floor(Math.random()*characters.length)];
