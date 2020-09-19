@@ -90,7 +90,7 @@ function generatePassword() {
   //confirms use of special characters
   var useSpecial = confirm('Would you like your password to contain special characters? (Select "OK" for yes, or "Cancel" for no)')
 
-  if (useLower) {
+  if (useSpecial) {
 
     //verifies user's choice
     alert("You have chosen to include special characters")
