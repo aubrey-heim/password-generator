@@ -18,12 +18,19 @@ var special = ["!", "@", "#", "$", "%", "~", "&", "^", "*", "?", "<", ">"]
 
 function generatePassword() {
 
-var passLength = prompt("How many characters would you like your password to be?")
+var passLength = prompt("How many characters would you like your password to be? Please input a number between 8 and 128.")
 
-if (passLength === "0" || passLength === "") {
-  alert("Error! Please input a number greater than zero.")
-  return
-} else alert("You have selected " + passLength + " characters.")
+// if (parseInt(passLength) < 8 || parseInt(passLength) > 128 || passLength === null) {
+//   alert("Error! Please input a number between 8 and 128.")
+//   return
+// } else alert("You have selected " + passLength + " characters.")
+
+if (parseInt(passLength) >= 8 && parseInt(passLength) <= 128) {
+  alert("You have selected " + passLength + " characters.")
+} else {
+  alert("Error! Please input a number between 8 and 128.")
+  return("Please try again")
+}
 
 var useLower = confirm('Would you like your password to contain lower-case letters? (Select "OK" for yes, or "Cancel" for no)')
 if (useLower) {
@@ -57,6 +64,7 @@ if (useLower) {
 
 if (useLower === false && useUpper === false && useNumbers === false && useSpecial === false) {
   alert("Error! Please select at least one character type.")
+  return("Please try again")
 }
 
 
