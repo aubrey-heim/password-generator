@@ -13,6 +13,8 @@
 ## About the Project
 For this project, I was given the source code for a password generating page. I was then instructed to build the generatePassword function which would return a random password matching the user's preference for number of characters, and type of characters used. In the below preview of the deployed page, the user selects a password of 15 characters, made up of lower-case letters and numbers. They chose to not include upper-case letters or special characters. This resulted in a password of "y9j31fr0ont67pg".
 
+<img src="Assets/deployed.gif" alt="gif of deployed page in use">
+
 ### Arrays
 The first thing I did for this project was create four arrays for the various character types (lower-case letters, upper-case letters, numbers, and special characters). Arrays are variables that contain multiple values that can be accessed individually, or as a group. 
 
@@ -45,3 +47,5 @@ Additionally, you can access the deployed webpage at https://aubrey-heim.github.
 
 ## Acknowledgments
 Source code for user interface (index.html, style.css, and original script.js) provided by the UW Full-Stack Web Development Bootcamp: https://uwa.bootcampcontent.com/UWA-Bootcamp/uw-sea-fsf-pt-08-2020-u-c. 
+
+Gif of deployed page created using Screencastify: https://www.screencastify.com/
